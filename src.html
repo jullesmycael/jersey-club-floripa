@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jersey Club Floripa · Camisas de time do Brasil e do mundo</title>
+<meta name="description" content="Camisas de time do Brasil e do mundo, com o seu nome nas costas. Pedido direto com o Gabriel Yago pelo WhatsApp.">
+<meta name="theme-color" content="#05060a">
+<meta property="og:title" content="Jersey Club Floripa">
+<meta property="og:description" content="Vista a sua paixão. Camisas de time com o seu nome nas costas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05060a;--s1:#0c0f16;--s2:#121723;--ln:rgba(255,255,255,.09);--tx:#f3f5f8;--tx2:#98a2b3;--ac:#c8ff3d;--ac2:#3de0ff;--wa:#25d366;--r:22px;--d:"Unbounded",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--tx);font:16px/1.5 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px;border-radius:10px}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+.eyebrow{font:600 12px/1 Inter;letter-spacing:.22em;text-transform:uppercase;color:var(--ac)}
+h1,h2,h3{font-family:var(--d);letter-spacing:-.02em;line-height:1.02}
+h2{font-size:clamp(32px,5.4vw,64px);font-weight:900}
+.lead{color:var(--tx2);font-size:clamp(16px,1.6vw,19px);max-width:560px}
+.grad{background:linear-gradient(100deg,var(--ac),var(--ac2) 60%,#b98cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* aurora + grain */
+.aurora{position:fixed;inset:-20vmax;z-index:-2;pointer-events:none;filter:blur(80px);opacity:.5;background:
+ radial-gradient(30vmax 30vmax at 15% 20%,rgba(200,255,61,.16),transparent 60%),
+ radial-gradient(35vmax 35vmax at 85% 30%,rgba(61,224,255,.14),transparent 60%),
+ radial-gradient(40vmax 30vmax at 50% 100%,rgba(150,90,255,.14),transparent 60%);animation:au 24s ease-in-out infinite alternate}
+@keyframes au{to{transform:translate3d(3vmax,-3vmax,0) rotate(8deg)}}
+.grain{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.spot{position:fixed;width:520px;height:520px;left:0;top:0;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(200,255,61,.10),transparent 60%);transform:translate3d(-999px,0,0);transition:opacity .3s}
+@media (pointer:coarse){.spot{display:none}}
+
+/* nav */
+.nav{position:fixed;inset:12px 0 auto;z-index:50;pointer-events:none}
+.nav .bar{pointer-events:auto;display:flex;align-items:center;gap:10px;padding:8px 8px 8px 18px;border-radius:999px;background:rgba(12,15,22,.55);border:1px solid var(--ln);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);transition:background .3s}
+.logo{display:flex;align-items:center;gap:10px;font:900 15px/1 var(--d);letter-spacing:.02em;text-decoration:none;color:var(--tx);white-space:nowrap}
+.logo i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-style:normal;font-size:12px;color:#05060a;background:linear-gradient(135deg,var(--ac),var(--ac2))}
+.logo small{font:600 10px Inter;letter-spacing:.28em;color:var(--tx2);display:block;margin-top:3px}
+.nav .links{display:flex;gap:4px;margin-left:auto}
+.nav .links a{padding:10px 14px;border-radius:999px;color:var(--tx2);text-decoration:none;font-weight:500;font-size:14px;transition:.2s}
+.nav .links a:hover{color:var(--tx);background:rgba(255,255,255,.06)}
+.ib{position:relative;height:42px;min-width:42px;padding:0 14px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid var(--ln);font-weight:600;font-size:14px;transition:.2s}
+.ib:hover{background:rgba(255,255,255,.12)}
+.ib svg{width:18px;height:18px}
+.ib .n{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--ac);color:#05060a;font:700 11px/20px Inter;text-align:center;transform:scale(0);transition:transform .35s cubic-bezier(.2,1.6,.4,1)}
+.ib .n.on{transform:scale(1)}
+.ib.wa{background:var(--wa);color:#04210f;border-color:transparent}
+@media (max-width:820px){.nav .links{display:none}.nav .bar{margin-left:auto}.ib.wa span{display:none}.nav .acts{margin-left:auto}}
+.acts{display:flex;gap:8px}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:center;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:-8% 0 0;z-index:-2;background:url({{st_maracana}}) center/cover;will-change:transform}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,6,10,.55),rgba(5,6,10,.35) 40%,var(--bg) 96%),radial-gradient(80% 60% at 30% 50%,rgba(5,6,10,.7),transparent)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:120px 0 80px}
+.hero h1{font-size:clamp(38px,6.6vw,92px);font-weight:900;text-transform:uppercase;line-height:1.04}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 .ln>span{display:block;transform:translateY(105%);animation:up 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.12s}
+@keyframes up{to{transform:none}}
+.hero .lead{margin:22px 0 30px;color:#c7cfdb}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{height:54px;padding:0 26px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .25s cubic-bezier(.2,1.4,.4,1),box-shadow .3s,background .2s;will-change:transform}
+.btn:active{transform:scale(.97)}
+.btn.pri{background:var(--ac);color:#05060a;box-shadow:0 10px 40px -10px rgba(200,255,61,.6)}
+.btn.pri:hover{box-shadow:0 14px 50px -8px rgba(200,255,61,.8)}
+.btn.gh{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:var(--tx);backdrop-filter:blur(10px)}
+.btn.wa{background:var(--wa);color:#04210f;box-shadow:0 10px 40px -10px rgba(37,211,102,.6)}
+.btn svg{width:20px;height:20px}
+.stats{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap}
+.stats b{display:block;font:700 26px/1 var(--d)}
+.stats span{font-size:13px;color:var(--tx2)}
+.stage{perspective:1200px;display:grid;place-items:center;position:relative}
+.stage .halo{position:absolute;width:80%;aspect-ratio:1;border-radius:50%;background:conic-gradient(from 0deg,var(--ac),var(--ac2),#b98cff,var(--ac));filter:blur(70px);opacity:.35;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.j3d{position:relative;width:min(420px,78vw);aspect-ratio:200/220;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.j3d .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;filter:drop-shadow(0 40px 50px rgba(0,0,0,.55))}
+.j3d .face.back{transform:rotateY(180deg)}
+.float{animation:fl 6s ease-in-out infinite}
+@keyframes fl{50%{translate:0 -14px}}
+.flipbtn{position:absolute;bottom:-6px;left:50%;translate:-50% 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx2);padding:8px 14px;border-radius:999px;border:1px solid var(--ln);background:rgba(12,15,22,.6);backdrop-filter:blur(10px)}
+.scrollhint{position:absolute;bottom:22px;left:50%;translate:-50% 0;width:24px;height:38px;border:2px solid rgba(255,255,255,.3);border-radius:14px}
+.scrollhint::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--tx);animation:sh 1.8s infinite}
+@keyframes sh{to{transform:translateY(12px);opacity:0}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;text-align:left;padding-top:100px}.stage{order:-1;margin-top:10px}.j3d{width:min(300px,64vw)}.scrollhint{display:none}}
+
+/* marquee */
+.mq{border-block:1px solid var(--ln);background:rgba(255,255,255,.02);overflow:hidden;padding:22px 0;mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.mq .t{display:flex;gap:56px;width:max-content;animation:mq 40s linear infinite;align-items:center}
+.mq:hover .t{animation-play-state:paused}
+.mq img{height:46px;width:auto;filter:grayscale(1) brightness(1.6);opacity:.55;transition:.3s}
+.mq img:hover{filter:none;opacity:1;transform:scale(1.12)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:110px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.head .eyebrow{margin-bottom:14px;display:block}
+
+/* leagues */
+.lg{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(250px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none}
+.lg::-webkit-scrollbar{display:none}
+.lc{scroll-snap-align:start;position:relative;height:340px;border-radius:var(--r);overflow:hidden;text-align:left;isolation:isolate;border:1px solid var(--ln);background:var(--s1);transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.lc .ph{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.lc::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,6,10,.05),rgba(5,6,10,.92))}
+.lc:hover{transform:translateY(-6px);border-color:rgba(200,255,61,.5)}
+.lc:hover .ph{transform:scale(1.08)}
+.lc .in{position:absolute;inset:auto 20px 20px}
+.lc h3{font-size:24px;font-weight:700}
+.lc p{color:#c3cad6;font-size:14px;margin-top:6px}
+.lc .cr{display:flex;margin-bottom:14px}
+.lc .cr img{width:38px;height:38px;object-fit:contain;padding:5px;border-radius:50%;background:rgba(255,255,255,.92);margin-right:-8px;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.lc .go{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);transition:.3s}
+.lc:hover .go{background:var(--ac);color:#05060a;transform:rotate(-45deg)}
+.lc.on{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac) inset}
+
+/* catalog */
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:26px;position:sticky;top:72px;z-index:20;padding:10px;border-radius:20px;background:rgba(5,6,10,.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--ln)}
+.search{flex:1 1 220px;display:flex;align-items:center;gap:10px;height:46px;padding:0 16px;border-radius:999px;background:var(--s2);border:1px solid var(--ln)}
+.search input{flex:1;background:none;border:0;outline:0;font-size:16px;min-width:0}
+.search svg{width:18px;height:18px;opacity:.6}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1 1 100%}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--ln);background:var(--s1);color:var(--tx2);font-weight:600;font-size:14px;transition:.25s}
+.chip:hover{color:var(--tx)}
+.chip.on{background:var(--tx);color:#05060a;border-color:var(--tx)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{position:relative;border-radius:var(--r);background:linear-gradient(180deg,var(--s2),var(--s1));border:1px solid var(--ln);overflow:hidden;transform-style:preserve-3d;transition:border-color .3s,box-shadow .4s;animation:pop .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.card:hover{border-color:rgba(255,255,255,.22);box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.card .vis{position:relative;aspect-ratio:1/1;display:grid;place-items:center;cursor:pointer;perspective:900px;background:radial-gradient(70% 60% at 50% 45%,var(--glow,rgba(255,255,255,.08)),transparent 70%)}
+.card .vis .j3d{width:72%}
+.card:hover .vis .j3d{transform:rotateY(180deg)}
+.card .tag{position:absolute;top:14px;left:14px;font:700 10px/1 Inter;letter-spacing:.16em;text-transform:uppercase;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px)}
+.card .tag.hot{background:var(--ac);color:#05060a}
+.card .body{padding:16px 18px 18px}
+.card .lgn{font-size:12px;color:var(--tx2);display:flex;align-items:center;gap:8px}
+.card .lgn img{width:20px;height:20px;object-fit:contain}
+.card h3{font:700 17px/1.2 var(--d);margin:8px 0 2px}
+.card .ver{font-size:13px;color:var(--tx2)}
+.card .row{display:flex;align-items:end;justify-content:space-between;margin-top:14px;gap:8px}
+.price b{font:700 20px/1 var(--d)}
+.price small{display:block;font-size:12px;color:var(--tx2);margin-top:5px}
+.add{width:46px;height:46px;border-radius:50%;background:var(--tx);color:#05060a;display:grid;place-items:center;transition:transform .3s cubic-bezier(.2,1.6,.4,1),background .2s;flex:none}
+.add:hover{background:var(--ac);transform:rotate(90deg)}
+.add svg{width:20px;height:20px}
+.empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--tx2)}
+
+/* banner */
+.band{position:relative;min-height:80vh;display:grid;place-items:center;text-align:center;overflow:hidden;isolation:isolate;padding:120px 0}
+.band .bg{position:absolute;inset:-15% 0;z-index:-2;background:url({{st_allianz}}) center/cover;will-change:transform}
+.band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--bg),rgba(5,6,10,.55) 30%,rgba(5,6,10,.55) 70%,var(--bg))}
+.band h2{font-size:clamp(40px,8vw,110px);text-transform:uppercase}
+.band .lead{margin:20px auto 0}
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:60px;text-align:left}
+.feat div{padding:22px;border-radius:var(--r);background:rgba(12,15,22,.6);border:1px solid var(--ln);backdrop-filter:blur(14px)}
+.feat b{display:block;font:700 16px/1.2 var(--d);margin:14px 0 6px}
+.feat p{font-size:14px;color:var(--tx2)}
+.feat .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(200,255,61,.12);color:var(--ac)}
+.feat .ic svg{width:22px;height:22px}
+@media (max-width:900px){.feat{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.feat{grid-template-columns:1fr}}
+
+/* gabriel */
+.gab{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.pic{position:relative;border-radius:32px;padding:3px;background:conic-gradient(from var(--a,0deg),var(--ac),var(--ac2),#b98cff,var(--ac));animation:ring 6s linear infinite}
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes ring{to{--a:360deg}}
+.pic img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:30px}
+.pic .badge{position:absolute;left:18px;bottom:18px;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:999px;background:rgba(5,6,10,.7);backdrop-filter:blur(14px);font-weight:600;font-size:14px}
+.pic .badge i{width:10px;height:10px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 0 rgba(37,211,102,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.gab h2{margin:14px 0 18px}
+.gab .lead{margin-bottom:28px}
+.phone{font:700 clamp(22px,3vw,30px)/1 var(--d);margin-bottom:24px;letter-spacing:-.01em}
+.phone span{display:block;font:500 13px Inter;color:var(--tx2);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+@media (max-width:900px){.gab{grid-template-columns:1fr;gap:36px}.pic{max-width:440px}}
+
+/* faq */
+.faq{display:grid;gap:10px;max-width:860px}
+.faq details{border-radius:18px;background:var(--s1);border:1px solid var(--ln);padding:0 22px;transition:background .3s}
+.faq details[open]{background:var(--s2)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:600;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 24px/1 Inter;color:var(--ac);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding:0 0 20px;color:var(--tx2)}
+table.sz{width:100%;border-collapse:collapse;margin:0 0 20px;font-size:14px}
+.sz td,.sz th{padding:8px;border-bottom:1px solid var(--ln);text-align:center}
+.sz th{color:var(--tx2);font-weight:500}
+
+footer{border-top:1px solid var(--ln);padding:60px 0 120px;color:var(--tx2);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between}
+footer a{color:var(--tx);text-decoration:none}
+footer .big{font:900 clamp(40px,10vw,140px)/.9 var(--d);letter-spacing:-.04em;width:100%;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.18);margin-bottom:20px}
+.cred{font-size:12px;opacity:.6;width:100%}
+
+/* floating wa */
+.fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:45;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;color:#fff;box-shadow:0 12px 30px -6px rgba(37,211,102,.6);animation:pulse 2.4s infinite;transition:transform .3s}
+.fab:hover{transform:scale(1.08)}
+.fab svg{width:30px;height:30px}
+
+/* drawer + modal */
+.scrim{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:70;width:min(440px,100%);background:var(--s1);border-left:1px solid var(--ln);display:flex;flex-direction:column;transform:translateX(105%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.drawer.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:22px 22px 16px;border-bottom:1px solid var(--ln)}
+.dh h3{font-size:22px}
+.x{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.07);display:grid;place-items:center;font-size:22px}
+.items{flex:1;overflow-y:auto;padding:10px 22px}
+.it{display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln);animation:pop .4s both}
+.it .mini{width:70px;height:70px;border-radius:16px;background:var(--s2);display:grid;place-items:center}
+.it .mini svg{width:54px}
+.it b{font-size:14px;display:block}
+.it small{color:var(--tx2);font-size:12px;display:block;margin-top:2px}
+.qty{display:flex;align-items:center;gap:6px;margin-top:8px}
+.qty button{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.08)}
+.it .pr{text-align:right;font-weight:700;font-size:14px}
+.it .rm{display:block;margin-top:8px;font-size:12px;color:var(--tx2);text-decoration:underline}
+.df{padding:18px 22px calc(22px + env(safe-area-inset-bottom));border-top:1px solid var(--ln);display:grid;gap:12px}
+.tot{display:flex;justify-content:space-between;align-items:end}
+.tot b{font:700 26px/1 var(--d)}
+.tot small{color:var(--tx2);font-size:12px}
+.df .btn{width:100%}
+.dempty{text-align:center;padding:60px 10px;color:var(--tx2)}
+.dempty .j3d{width:120px;margin:0 auto 20px;opacity:.5}
+
+.modal{position:fixed;z-index:70;inset:0;display:grid;place-items:center;padding:16px;pointer-events:none}
+.mbox{pointer-events:auto;width:min(980px,100%);max-height:calc(100svh - 32px);overflow:auto;border-radius:28px;background:var(--s1);border:1px solid var(--ln);display:grid;grid-template-columns:1fr 1fr;opacity:0;transform:translateY(30px) scale(.97);transition:.45s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+.modal.on .mbox{opacity:1;transform:none;visibility:visible}
+.mvis{position:relative;display:grid;place-items:center;padding:40px 20px;perspective:1200px;background:radial-gradient(70% 60% at 50% 45%,var(--glow,rgba(255,255,255,.1)),transparent 70%),var(--s2);min-height:380px}
+.mvis .j3d{width:min(340px,80%)}
+.mvis .tg{position:absolute;bottom:18px;left:50%;translate:-50% 0;display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(5,6,10,.6);border:1px solid var(--ln)}
+.mvis .tg button{padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--tx2)}
+.mvis .tg button.on{background:var(--tx);color:#05060a}
+.mform{padding:30px;display:grid;gap:18px;align-content:start}
+.mform h3{font-size:26px}
+.mform .x{position:absolute;top:16px;right:16px;z-index:2}
+.lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx2);margin-bottom:8px;display:block}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{min-width:48px;height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--ln);background:var(--s2);font-weight:600;transition:.2s}
+.seg button.on{border-color:var(--ac);background:rgba(200,255,61,.12);color:var(--ac)}
+.seg button small{display:block;font-size:11px;font-weight:500;color:var(--tx2)}
+.fld{display:grid;grid-template-columns:1fr 100px;gap:10px}
+.fld input{height:48px;border-radius:12px;border:1px solid var(--ln);background:var(--s2);padding:0 14px;outline:0;font-size:16px;text-transform:uppercase;width:100%}
+.fld input:focus{border-color:var(--ac)}
+.hint{font-size:12px;color:var(--tx2);margin-top:6px}
+.mtot{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:6px;flex-wrap:wrap}
+.mtot b{font:700 28px/1 var(--d)}
+.mtot small{display:block;color:var(--tx2);font-size:12px;margin-top:6px}
+@media (max-width:820px){.modal{place-items:end center;padding:0}.mbox{grid-template-columns:1fr;border-radius:28px 28px 0 0;max-height:94svh}.mvis{min-height:300px;padding:30px 20px 70px}.mvis .j3d{width:min(230px,60vw)}.mform{padding:22px 20px calc(24px + env(safe-area-inset-bottom))}}
+
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));z-index:90;translate:-50% 20px;opacity:0;padding:14px 20px;border-radius:999px;background:var(--tx);color:#05060a;font-weight:600;font-size:14px;transition:.4s cubic-bezier(.2,1.4,.4,1);pointer-events:none;white-space:nowrap}
+.toast.on{translate:-50% 0;opacity:1}
+
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}.hero h1 .ln>span{transform:none}}
+</style>
+</head>
+<body>
+<div class="aurora"></div><div class="grain"></div><div class="spot" id="spot"></div>
+
+<header class="nav"><div class="wrap"><div class="bar">
+ <a class="logo" href="#top"><i>JC</i><span>JERSEY CLUB<small>FLORIPA</small></span></a>
+ <nav class="links"><a href="#ligas">Ligas</a><a href="#camisas">Camisas</a><a href="#gabriel">Atendimento</a><a href="#duvidas">Dúvidas</a></nav>
+ <div class="acts">
+  <a class="ib wa" data-wa="Olá, Gabriel! Vim pelo site do Jersey Club." href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+  <button class="ib" id="cartBtn" aria-label="Abrir carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="n" id="cartN">0</span></button>
+ </div>
+</div></div></header>
+
+<main id="top">
+<section class="hero" style="padding:0">
+ <div class="bg" id="heroBg" role="img" aria-label="Maracanã iluminado em noite de final"></div>
+ <div class="wrap">
+  <div>
+   <span class="eyebrow">Temporada 26/27 · Brasil e mundo</span>
+   <h1 style="margin-top:18px"><span class="ln"><span>Vista a sua</span></span><span class="ln"><span class="grad">paixão.</span></span></h1>
+   <p class="lead">Do estádio para a rua. As camisas dos maiores clubes do planeta, com o seu nome nas costas. Escolha, personalize e feche direto com o Gabriel no WhatsApp.</p>
+   <div class="cta">
+    <a class="btn pri" href="#camisas">Ver camisas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="btn gh" data-wa="Olá, Gabriel! Quero ajuda para escolher uma camisa." href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>Falar com o Gabriel</a>
+   </div>
+   <div class="stats"><div><b>9</b><span>ligas e seleções</span></div><div><b>5x</b><span>sem juros</span></div><div><b>Pix</b><span>ou cartão</span></div><div><b>BR</b><span>entrega no Brasil</span></div></div>
+  </div>
+  <div class="stage"><div class="halo"></div><div class="float"><div class="j3d" id="heroJ"></div></div><button class="flipbtn" id="heroFlip">Girar a camisa</button></div>
+ </div>
+</section>
+
+<div class="mq" aria-hidden="true"><div class="t" id="mq"></div></div>
+
+<section id="ligas"><div class="wrap">
+ <div class="head rv"><div><span class="eyebrow">Ligas</span><h2>Escolha o seu<br><span class="grad">campeonato.</span></h2></div><p class="lead">Toque numa liga para ver as camisas dela.</p></div>
+ <div class="lg rv" id="lg"></div>
+</div></section>
+
+<section id="camisas" style="padding-top:20px"><div class="wrap">
+ <div class="head rv"><div><span class="eyebrow">Coleção</span><h2>Camisas.</h2></div><p class="lead">Passe o mouse para ver as costas. Toque para escolher versão, tamanho e o seu nome.</p></div>
+ <div class="tools">
+  <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Buscar clube, seleção ou liga" autocomplete="off" aria-label="Buscar camisa"></label>
+  <div class="chips" id="chips"></div>
+ </div>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="band" aria-label="Allianz Arena ao pôr do sol"><div class="bg" id="bandBg"></div><div class="wrap">
+ <span class="eyebrow rv">Jersey Club</span>
+ <h2 class="rv" style="margin-top:16px">Do estádio<br><span class="grad">para a rua.</span></h2>
+ <p class="lead rv">Versão torcedor para o dia a dia, versão jogador para quem quer a mesma da campo. E o seu nome nas costas, do jeito que você imaginou.</p>
+ <div class="feat">
+  <div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></span><b>Pix ou cartão</b><p>Pague à vista no Pix ou parcele em até 5x sem juros.</p></div>
+  <div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></span><b>Entrega no Brasil</b><p>Acompanhe o pedido do começo ao fim.</p></div>
+  <div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/></svg></span><b>Seu nome e número</b><p>Veja como fica antes de comprar, aqui no site.</p></div>
+  <div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg></span><b>Atendimento direto</b><p>Tire dúvidas e feche o pedido pelo WhatsApp.</p></div>
+ </div>
+</div></section>
+
+<section id="gabriel"><div class="wrap gab">
+ <div class="pic rv"><img src="{{gabriel}}" alt="Gabriel Yago, do Jersey Club" width="640" height="640"><span class="badge"><i></i>Atendimento no WhatsApp</span></div>
+ <div class="rv">
+  <span class="eyebrow">Atendimento</span>
+  <h2>Quem te atende<br>é o <span class="grad">Gabriel Yago.</span></h2>
+  <p class="lead">Sem robô e sem fila. Você manda o pedido do carrinho, o Gabriel confere tamanho, personalização e prazo, e te passa o pagamento.</p>
+  <p class="phone"><span>WhatsApp</span>+55 61 9126-3386</p>
+  <div class="cta">
+   <a class="btn wa" data-wa="Olá, Gabriel! Vim pelo site do Jersey Club e quero fazer um pedido." href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+   <a class="btn gh" href="https://www.instagram.com/jerseyclubfloripa" target="_blank" rel="noopener">@jerseyclubfloripa</a>
+  </div>
+ </div>
+</div></section>
+
+<section id="duvidas" style="padding-top:0"><div class="wrap">
+ <div class="head rv"><div><span class="eyebrow">Dúvidas</span><h2>Antes de pedir.</h2></div></div>
+ <div class="faq rv">
+  <details><summary>Qual a diferença entre torcedor e jogador?</summary><p>A torcedor tem corte mais solto e tecido confortável para o dia a dia. A jogador é a mesma usada em campo: corte ajustado, tecido mais leve e escudo termocolado.</p></details>
+  <details><summary>Que tamanho eu peço?</summary><div><table class="sz"><tr><th>Tam.</th><th>Largura</th><th>Altura</th></tr><tr><td>P</td><td>50 cm</td><td>70 cm</td></tr><tr><td>M</td><td>53 cm</td><td>72 cm</td></tr><tr><td>G</td><td>56 cm</td><td>74 cm</td></tr><tr><td>GG</td><td>59 cm</td><td>76 cm</td></tr><tr><td>XG</td><td>62 cm</td><td>78 cm</td></tr></table><p>Na versão jogador, peça um tamanho acima se gosta de folga. Na dúvida, chama o Gabriel.</p></div></details>
+  <details><summary>Como funciona a personalização?</summary><p>Você digita nome (até 12 letras) e número (0 a 99) e vê na hora como fica. A personalização soma R$ 30,00 ao valor da camisa.</p></details>
+  <details><summary>Como eu pago?</summary><p>Ao finalizar, o carrinho abre o WhatsApp do Gabriel com o pedido pronto. Ele confirma e te manda o Pix ou o link do cartão em até 5x sem juros.</p></details>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="big">JERSEY CLUB</div>
+ <div><b style="color:var(--tx)">Jersey Club Floripa</b><br>Camisas de time do Brasil e do mundo.<br>© 2026 Jersey Club. Florianópolis, SC.</div>
+ <div>Atendimento: <a data-wa="Olá, Gabriel!" href="#" target="_blank" rel="noopener">Gabriel Yago · +55 61 9126-3386</a><br>Instagram: <a href="https://www.instagram.com/jerseyclubfloripa" target="_blank" rel="noopener">@jerseyclubfloripa</a></div>
+ <p class="cred">Fotos dos estádios: Wikimedia Commons, licenças Creative Commons. Escudos são marcas dos respectivos clubes e federações. Preços sujeitos a confirmação no atendimento.</p>
+</div></footer>
+
+<a class="fab" data-wa="Olá, Gabriel! Vim pelo site do Jersey Club." href="#" target="_blank" rel="noopener" aria-label="Falar com o Gabriel no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg></a>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Carrinho" aria-hidden="true">
+ <div class="dh"><h3>Carrinho</h3><button class="x" data-close aria-label="Fechar">×</button></div>
+ <div class="items" id="items"></div>
+ <div class="df" id="df">
+  <div class="tot"><div><small>Total</small><br><b id="tot">R$ 0,00</b></div><small id="parc"></small></div>
+  <a class="btn wa" id="checkout" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>Finalizar com o Gabriel</a>
+ </div>
+</aside>
+
+<div class="modal" id="modal" aria-hidden="true"><div class="mbox" role="dialog" aria-modal="true" aria-labelledby="mTitle" style="position:relative">
+ <div class="mvis" id="mvis"><div class="j3d" id="mJ"></div><div class="tg"><button class="on" data-side="f">Frente</button><button data-side="b">Costas</button></div></div>
+ <div class="mform">
+  <button class="x" data-close aria-label="Fechar">×</button>
+  <div><span class="eyebrow" id="mLg"></span><h3 id="mTitle" style="margin-top:10px"></h3><p class="ver" id="mVer" style="color:var(--tx2);margin-top:4px"></p></div>
+  <div id="mVerWrap"><span class="lbl">Versão</span><div class="seg" id="mV"></div></div>
+  <div><span class="lbl">Tamanho</span><div class="seg" id="mS"></div></div>
+  <div><span class="lbl">Seu nome nas costas (opcional)</span><div class="fld"><input id="mName" maxlength="12" placeholder="NOME" autocomplete="off" aria-label="Nome"><input id="mNum" inputmode="numeric" maxlength="2" placeholder="10" autocomplete="off" aria-label="Número"></div><p class="hint">Só letras no nome e de 0 a 99 no número. Personalização: + R$ 30,00.</p></div>
+  <div class="mtot"><div><b id="mPrice"></b><small id="mParc"></small></div><button class="btn pri" id="mAdd">Adicionar ao carrinho</button></div>
+ </div>
+</div></div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="i-wa" viewBox="0 0 24 24"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.2-1.4A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.2 8.2 0 1 1 7 3.9Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></symbol></svg>
+
+<script>
+var WA='556191263386';
+var IMG={flamengo:'{{flamengo}}',palmeiras:'{{palmeiras}}',saopaulo:'{{saopaulo}}',galo:'{{galo}}',fluminense:'{{fluminense}}',botafogo:'{{botafogo}}',gremio:'{{gremio}}',cruzeiro:'{{cruzeiro}}',cbf:'{{cbf}}',bayern:'{{bayern}}',bvb:'{{bvb}}',milan:'{{milan}}',juve:'{{juve}}',inter:'{{inter}}',psg:'{{psg}}',liverpool:'{{liverpool}}',boca:'{{boca}}',realretro:'{{realretro}}',miami:'{{miami}}',st_bernabeu:'{{st_bernabeu}}',st_anfield:'{{st_anfield}}',st_bvb:'{{st_bvb}}',st_maracana:'{{st_maracana}}',st_allianz:'{{st_allianz}}'};
+var PRICE={t:229.9,j:299.9,r:349.9},PERS=30;
+var LG={br:'Brasileirão',sel:'Seleções',laliga:'La Liga',pl:'Premier League',bund:'Bundesliga',ita:'Série A Itália',fra:'Ligue 1',arg:'Argentina',mls:'MLS'};
+var LGC=[
+ {k:'br',p:'st_maracana',d:'Flamengo, Palmeiras, Galo e mais',c:['flamengo','palmeiras','galo','saopaulo']},
+ {k:'sel',p:'st_maracana',d:'A amarelinha e a azul de 2026',c:['cbf'],pos:'70% 50%'},
+ {k:'laliga',p:'st_bernabeu',d:'Clássicos de Madri',c:['realretro']},
+ {k:'pl',p:'st_anfield',d:'O canto de Anfield',c:['liverpool']},
+ {k:'bund',p:'st_bvb',d:'A muralha amarela e o gigante da Baviera',c:['bvb','bayern']},
+ {k:'ita',g:'linear-gradient(135deg,#0b2a6b,#0a0f1f 60%,#7a0a14)',d:'Milan, Juventus e Inter',c:['milan','juve','inter']},
+ {k:'fra',g:'linear-gradient(135deg,#0b1f44,#05060a 55%,#da291c)',d:'Paris Saint-Germain',c:['psg']},
+ {k:'arg',g:'linear-gradient(135deg,#0b3a8c,#05060a 55%,#f9c300)',d:'La Bombonera',c:['boca']},
+ {k:'mls',g:'linear-gradient(135deg,#f7b5cd,#231f20 70%)',d:'Inter Miami',c:['miami']}
+];
+var PR=[
+ {id:'fla1',c:'Flamengo',t:'Casa 26/27',l:'br',cr:'flamengo',c1:'#c8102e',c2:'#141414',c3:'#fff',pat:'hoops',hot:1},
+ {id:'fla2',c:'Flamengo',t:'Fora 26/27',l:'br',cr:'flamengo',c1:'#f5f5f2',c2:'#c8102e',c3:'#141414',pat:'band'},
+ {id:'pal',c:'Palmeiras',t:'Casa 26/27',l:'br',cr:'palmeiras',c1:'#006437',c2:'#fff',c3:'#fff',pat:'plain'},
+ {id:'spfc',c:'São Paulo',t:'Casa 26/27',l:'br',cr:'saopaulo',c1:'#f6f6f4',c2:'#d0102b',c3:'#141414',pat:'band'},
+ {id:'cam',c:'Atlético Mineiro',t:'Casa 26/27',l:'br',cr:'galo',c1:'#f6f6f4',c2:'#141414',c3:'#141414',pat:'stripes',plate:1},
+ {id:'flu',c:'Fluminense',t:'Casa 26/27',l:'br',cr:'fluminense',c1:'#7a1c32',c2:'#00613c',c3:'#fff',pat:'stripes'},
+ {id:'bot',c:'Botafogo',t:'Casa 26/27',l:'br',cr:'botafogo',c1:'#141414',c2:'#f6f6f4',c3:'#fff',pat:'stripes',plate:1},
+ {id:'gre',c:'Grêmio',t:'Casa 26/27',l:'br',cr:'gremio',c1:'#0d80bf',c2:'#141414',c3:'#fff',pat:'stripes'},
+ {id:'cru',c:'Cruzeiro',t:'Casa 26/27',l:'br',cr:'cruzeiro',c1:'#003da5',c2:'#fff',c3:'#fff',pat:'plain'},
+ {id:'bra1',c:'Brasil',t:'Amarelinha 2026',l:'sel',cr:'cbf',c1:'#ffd902',c2:'#009739',c3:'#0a3d91',pat:'plain',hot:1},
+ {id:'bra2',c:'Brasil',t:'Azul 2026',l:'sel',cr:'cbf',c1:'#0b3a8c',c2:'#ffd902',c3:'#fff',pat:'plain'},
+ {id:'rma',c:'Real Madrid',t:'Retrô clássica',l:'laliga',cr:'realretro',c1:'#f6f6f4',c2:'#4b2a7a',c3:'#4b2a7a',pat:'plain',retro:1},
+ {id:'liv',c:'Liverpool',t:'Casa 26/27',l:'pl',cr:'liverpool',c1:'#c8102e',c2:'#f6f6f4',c3:'#fff',pat:'plain',wide:1},
+ {id:'fcb',c:'Bayern de Munique',t:'Casa 26/27',l:'bund',cr:'bayern',c1:'#dc052d',c2:'#fff',c3:'#fff',pat:'plain'},
+ {id:'bvb',c:'Borussia Dortmund',t:'Casa 26/27',l:'bund',cr:'bvb',c1:'#fde100',c2:'#141414',c3:'#141414',pat:'plain'},
+ {id:'mil',c:'Milan',t:'Casa 26/27',l:'ita',cr:'milan',c1:'#e30613',c2:'#141414',c3:'#fff',pat:'stripes'},
+ {id:'juv',c:'Juventus',t:'Casa 26/27',l:'ita',cr:'juve',c1:'#f6f6f4',c2:'#141414',c3:'#141414',pat:'stripes',plate:1},
+ {id:'int',c:'Inter de Milão',t:'Casa 26/27',l:'ita',cr:'inter',c1:'#0068a8',c2:'#141414',c3:'#fff',pat:'stripes'},
+ {id:'psg',c:'Paris Saint-Germain',t:'Casa 26/27',l:'fra',cr:'psg',c1:'#0b1f44',c2:'#da291c',c3:'#fff',pat:'vband',hot:1},
+ {id:'boc',c:'Boca Juniors',t:'Casa 26/27',l:'arg',cr:'boca',c1:'#0b3a8c',c2:'#f9c300',c3:'#f9c300',pat:'band'},
+ {id:'mia',c:'Inter Miami',t:'Casa 26/27',l:'mls',cr:'miami',c1:'#f7b5cd',c2:'#231f20',c3:'#231f20',pat:'plain',wide:1,dark:1}
+];
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var fmt=function(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:2})};
+var parc=function(v){var n=v>=300?5:v>=250?4:v>=220?3:2;return 'ou '+n+'x de '+fmt(v/n)+' sem juros'};
+var esc=function(s){return String(s).replace(/[&<>"']/g,function(c){return '&#'+c.charCodeAt(0)+';'})};
+var waLink=function(msg){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(msg)};
+$$('[data-wa]').forEach(function(a){a.href=waLink(a.dataset.wa)});
+
+/* camisa em SVG: frente com escudo real, costas com nome e número */
+var uid=0;
+var BODY='M64 14 38 23 8 60l24 22 14-12v128q0 8 8 8h92q8 0 8-8V70l14 12 24-22-30-37-26-9q-10 18-36 18T64 14Z';
+function jersey(p,back,name,num){
+ var id='j'+(uid++),pat='';
+ if(p.pat==='stripes')for(var x=52;x<160;x+=24)pat+='<rect x="'+x+'" y="0" width="12" height="220" fill="'+p.c2+'"/>';
+ if(p.pat==='hoops')for(var y=46;y<210;y+=34)pat+='<rect x="0" y="'+y+'" width="200" height="17" fill="'+p.c2+'"/>';
+ if(p.pat==='band')pat='<rect x="0" y="74" width="200" height="22" fill="'+p.c2+'"/><rect x="0" y="99" width="200" height="4" fill="'+p.c3+'" opacity=".8"/>';
+ if(p.pat==='vband')pat='<rect x="78" y="0" width="44" height="220" fill="'+p.c2+'"/><rect x="74" y="0" width="4" height="220" fill="#fff"/><rect x="122" y="0" width="4" height="220" fill="#fff"/>';
+ var g='<defs><clipPath id="'+id+'c"><path d="'+BODY+'"/></clipPath><linearGradient id="'+id+'s" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".22" stop-color="#fff" stop-opacity=".14"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient><linearGradient id="'+id+'v" y1="0" y2="1" x1="0" x2="0"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient></defs>';
+ var s='<svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'+g+'<g clip-path="url(#'+id+'c)"><rect width="200" height="220" fill="'+p.c1+'"/>'+pat+
+  '<path d="M8 60 32 82M192 60 168 82" stroke="'+p.c2+'" stroke-width="7"/>'+
+  '<rect width="200" height="220" fill="url(#'+id+'s)"/><rect width="200" height="220" fill="url(#'+id+'v)"/></g>'+
+  '<path d="'+(back?'M64 14q10 9 36 9t36-9':'M64 14q10 18 36 18t36-18')+'" fill="none" stroke="'+p.c2+'" stroke-width="5" stroke-linecap="round"/>';
+ if(!back){
+  var w=p.wide?44:28,h=p.wide?18:28;
+  s+=(p.plate?'<circle cx="'+(124+w/2)+'" cy="'+(64+h/2)+'" r="19" fill="#fff" opacity=".9"/>':'')+'<image href="'+IMG[p.cr]+'" x="'+(p.wide?110:124)+'" y="'+(p.wide?68:64)+'" width="'+w+'" height="'+h+'" preserveAspectRatio="xMidYMid meet"/>';
+ }else{
+  var tc=p.c3,n=(name||'').toUpperCase(),fs=Math.min(18,140/Math.max(n.length,1)/.72);
+  if(n)s+='<text x="100" y="66" text-anchor="middle" font-family="Unbounded,Inter,sans-serif" font-weight="700" font-size="'+fs.toFixed(1)+'" letter-spacing="1.5" fill="'+tc+'" stroke="'+(p.plate?'#fff':'none')+'" stroke-width="'+(p.plate?3:0)+'" paint-order="stroke">'+esc(n)+'</text>';
+  if(num!==''&&num!=null)s+='<text x="100" y="158" text-anchor="middle" font-family="Unbounded,Inter,sans-serif" font-weight="900" font-size="76" fill="'+tc+'" stroke="'+(p.plate?'#fff':'none')+'" stroke-width="'+(p.plate?5:0)+'" paint-order="stroke">'+esc(num)+'</text>';
+ }
+ return s+'</svg>';
+}
+function j3d(el,p,name,num){el.innerHTML='<div class="face">'+jersey(p,0)+'</div><div class="face back">'+jersey(p,1,name,num)+'</div>'}
+
+/* hero: Brasil girando, segue o dedo e o mouse */
+var heroP=PR[9],heroJ=$('#heroJ'),rotY=0,flipped=false;
+j3d(heroJ,heroP,'SEU NOME','10');
+$('#heroFlip').onclick=function(){flipped=!flipped;rotY=flipped?180:0;heroJ.style.transform='rotateY('+rotY+'deg)'};
+if(!RM&&matchMedia('(pointer:fine)').matches){
+ addEventListener('pointermove',function(e){
+  var x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
+  heroJ.style.transform='rotateY('+(rotY+x*30)+'deg) rotateX('+(-y*16)+'deg)';
+  $('#spot').style.transform='translate3d('+(e.clientX-260)+'px,'+(e.clientY-260)+'px,0)';
+ },{passive:true});
+}
+if(!RM)setInterval(function(){if(document.hidden)return;$('#heroFlip').click()},5200);
+
+/* marquee de escudos */
+var crests=['flamengo','palmeiras','cbf','bayern','milan','psg','galo','juve','bvb','fluminense','inter','boca','saopaulo','gremio','cruzeiro','botafogo','realretro'];
+var mq=crests.map(function(k){return '<img src="'+IMG[k]+'" alt="" loading="lazy">'}).join('');
+$('#mq').innerHTML=mq+mq;
+
+/* ligas */
+var filt='',query='';
+$('#lg').innerHTML=LGC.map(function(l){
+ var n=PR.filter(function(p){return p.l===l.k}).length;
+ return '<button class="lc" data-l="'+l.k+'"><div class="ph" style="'+(l.p?'background-image:url('+IMG[l.p]+');background-position:'+(l.pos||'center'):'background:'+l.g)+'"></div><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="in"><div class="cr">'+l.c.map(function(c){return '<img src="'+IMG[c]+'" alt="">'}).join('')+'</div><h3>'+LG[l.k]+'</h3><p>'+l.d+' · '+n+' '+(n>1?'camisas':'camisa')+'</p></div></button>';
+}).join('');
+$('#lg').addEventListener('click',function(e){var b=e.target.closest('.lc');if(!b)return;setFilter(b.dataset.l);$('#camisas').scrollIntoView({behavior:RM?'auto':'smooth'})});
+
+/* catálogo */
+$('#chips').innerHTML='<button class="chip on" data-l="">Todas</button>'+Object.keys(LG).map(function(k){return '<button class="chip" data-l="'+k+'">'+LG[k]+'</button>'}).join('');
+$('#chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(b)setFilter(b.dataset.l)});
+function setFilter(l){filt=l;$$('.chip').forEach(function(c){c.classList.toggle('on',c.dataset.l===l)});$$('.lc').forEach(function(c){c.classList.toggle('on',c.dataset.l===l)});draw()}
+var norm=function(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase()};
+$('#q').addEventListener('input',function(e){query=norm(e.target.value.trim());draw()});
+function basePrice(p){return p.retro?PRICE.r:PRICE.t}
+function draw(){
+ var list=PR.filter(function(p){return (!filt||p.l===filt)&&(!query||norm(p.c+' '+p.t+' '+LG[p.l]).indexOf(query)>-1)});
+ $('#grid').innerHTML=list.map(function(p,i){
+  var v=basePrice(p);
+  return '<article class="card" style="--glow:'+p.c1+'55;animation-delay:'+Math.min(i*.05,.6)+'s" data-id="'+p.id+'">'+
+  '<div class="vis" role="button" tabindex="0" aria-label="Personalizar '+esc(p.c)+' '+esc(p.t)+'"><div class="j3d">'+'<div class="face">'+jersey(p,0)+'</div><div class="face back">'+jersey(p,1,'SEU NOME','10')+'</div></div>'+(p.hot?'<span class="tag hot">Mais pedida</span>':p.retro?'<span class="tag">Retrô</span>':'')+'</div>'+
+  '<div class="body"><div class="lgn"><img src="'+IMG[p.cr]+'" alt="">'+LG[p.l]+'</div><h3>'+esc(p.c)+'</h3><div class="ver">'+esc(p.t)+(p.retro?'':' · Torcedor ou Jogador')+'</div>'+
+  '<div class="row"><div class="price"><b>'+(p.retro?'':'<span style="font:500 12px Inter;color:var(--tx2)">a partir de </span>')+fmt(v)+'</b><small>'+parc(v)+'</small></div><button class="add" aria-label="Escolher tamanho e adicionar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div></div></article>';
+ }).join('')||'<p class="empty">Nada com esse nome ainda. Chama o Gabriel que ele consegue.</p>';
+}
+draw();
+$('#grid').addEventListener('click',function(e){var c=e.target.closest('.card');if(c&&(e.target.closest('.vis')||e.target.closest('.add')))openModal(c.dataset.id)});
+$('#grid').addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.classList.contains('vis'))openModal(e.target.closest('.card').dataset.id)});
+/* tilt 3D nos cards (desktop) */
+if(!RM&&matchMedia('(pointer:fine)').matches){
+ $('#grid').addEventListener('pointermove',function(e){var c=e.target.closest('.card');if(!c)return;var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateX('+(-y*7)+'deg) rotateY('+(x*9)+'deg) translateY(-4px)'});
+ $('#grid').addEventListener('pointerout',function(e){var c=e.target.closest('.card');if(c&&!c.contains(e.relatedTarget))c.style.transform=''});
+}
+
+/* modal de personalização */
+var M={p:null,v:'t',s:'',side:'f'},SIZES=['P','M','G','GG','XG'];
+function mPrice(){var b=M.p.retro?PRICE.r:PRICE[M.v];return b+(($('#mName').value.trim()||$('#mNum').value!=='')?PERS:0)}
+function mRender(){
+ var p=M.p,n=$('#mName').value.trim(),u=$('#mNum').value;
+ var j=$('#mJ');j3d(j,p,n||'SEU NOME',u===''?'10':u);
+ j.style.transform='rotateY('+(M.side==='b'?180:0)+'deg)';
+ $$('#mvis .tg button').forEach(function(b){b.classList.toggle('on',b.dataset.side===M.side)});
+ $('#mV').innerHTML=['t','j'].map(function(v){return '<button class="'+(M.v===v?'on':'')+'" data-v="'+v+'">'+(v==='t'?'Torcedor':'Jogador')+'<small>'+fmt(PRICE[v])+'</small></button>'}).join('');
+ $('#mS').innerHTML=SIZES.map(function(s){return '<button class="'+(M.s===s?'on':'')+'" data-s="'+s+'">'+s+'</button>'}).join('');
+ var v=mPrice();$('#mPrice').textContent=fmt(v);$('#mParc').textContent=parc(v);
+}
+function openModal(id){
+ M.p=PR.filter(function(p){return p.id===id})[0];M.v='t';M.s='';M.side='f';
+ $('#mName').value='';$('#mNum').value='';
+ $('#mLg').textContent=LG[M.p.l];$('#mTitle').textContent=M.p.c;$('#mVer').textContent=M.p.t;
+ $('#mVerWrap').style.display=M.p.retro?'none':'';
+ $('#mvis').style.setProperty('--glow',M.p.c1+'66');
+ mRender();show('modal');
+}
+$('#mV').addEventListener('click',function(e){var b=e.target.closest('button');if(b){M.v=b.dataset.v;mRender()}});
+$('#mS').addEventListener('click',function(e){var b=e.target.closest('button');if(b){M.s=b.dataset.s;mRender()}});
+$('#mvis').addEventListener('click',function(e){var b=e.target.closest('[data-side]');if(b){M.side=b.dataset.side;mRender()}});
+/* nome só letras, número só 0-99, digitado ou colado */
+$('#mName').addEventListener('input',function(e){e.target.value=e.target.value.replace(/[^A-Za-zÀ-ÿ ]/g,'').replace(/\s{2,}/g,' ').toUpperCase();M.side='b';mRender()});
+$('#mNum').addEventListener('input',function(e){e.target.value=e.target.value.replace(/\D/g,'').slice(0,2);M.side='b';mRender()});
+$('#mAdd').onclick=function(){
+ if(!M.s){toast('Escolha o tamanho primeiro');$('#mS').animate&&!RM&&$('#mS').animate([{transform:'translateX(0)'},{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'translateX(0)'}],{duration:320});return}
+ var n=$('#mName').value.trim(),u=$('#mNum').value;
+ add({id:M.p.id,v:M.p.retro?'r':M.v,s:M.s,n:n,u:u,q:1,pr:mPrice()});
+ hide();toast('Na sacola: '+M.p.c+' · '+M.s);
+};
+
+/* carrinho (fica salvo no aparelho) */
+var CART=[];try{CART=JSON.parse(localStorage.getItem('jc-cart')||'[]')}catch(e){}
+function save(){try{localStorage.setItem('jc-cart',JSON.stringify(CART))}catch(e){}renderCart()}
+function add(it){var k=[it.id,it.v,it.s,it.n,it.u].join('|');var f=CART.filter(function(c){return [c.id,c.v,c.s,c.n,c.u].join('|')===k})[0];if(f)f.q++;else CART.push(it);save();var b=$('#cartBtn');if(!RM&&b.animate)b.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}],{duration:450,easing:'cubic-bezier(.2,1.6,.4,1)'})}
+var VN={t:'Torcedor',j:'Jogador',r:'Retrô'};
+function prod(id){return PR.filter(function(p){return p.id===id})[0]}
+function total(){return CART.reduce(function(a,c){return a+c.pr*c.q},0)}
+function renderCart(){
+ var n=CART.reduce(function(a,c){return a+c.q},0);$('#cartN').textContent=n;$('#cartN').classList.toggle('on',n>0);
+ $('#df').style.display=n?'':'none';
+ $('#items').innerHTML=n?CART.map(function(c,i){var p=prod(c.id);if(!p)return '';return '<div class="it"><div class="mini">'+jersey(p,c.n||c.u?1:0,c.n,c.u)+'</div><div><b>'+esc(p.c)+' · '+esc(p.t)+'</b><small>'+VN[c.v]+' · Tam. '+c.s+(c.n||c.u?' · '+esc(c.n)+' '+esc(c.u):'')+'</small><div class="qty"><button data-q="-1" data-i="'+i+'" aria-label="Menos">−</button><span>'+c.q+'</span><button data-q="1" data-i="'+i+'" aria-label="Mais">+</button></div></div><div class="pr">'+fmt(c.pr*c.q)+'<button class="rm" data-rm="'+i+'">Tirar</button></div></div>'}).join(''):'<div class="dempty"><div class="j3d">'+jersey(PR[0],0)+'</div>Sua sacola está vazia.<br>Bora vestir um clube?</div>';
+ var t=total();$('#tot').textContent=fmt(t);$('#parc').textContent=t?parc(t):'';
+ $('#checkout').href=waLink(orderMsg());
+}
+function orderMsg(){
+ var L=['Olá, Gabriel! Quero fechar este pedido no Jersey Club:',''];
+ CART.forEach(function(c,i){var p=prod(c.id);if(!p)return;L.push((i+1)+') '+p.c+' '+p.t+' · '+VN[c.v]+' · Tam. '+c.s+(c.n||c.u?' · Personalizada: '+(c.n||'-')+' '+(c.u||''):'')+' · '+c.q+'x '+fmt(c.pr)+' = '+fmt(c.pr*c.q))});
+ L.push('','Total: '+fmt(total()),'','Pode me passar o pagamento e o prazo de entrega?');
+ return L.join('\n');
+}
+$('#items').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.rm!=null){CART.splice(+b.dataset.rm,1)}else if(b.dataset.q){var c=CART[+b.dataset.i];c.q+=+b.dataset.q;if(c.q<1)CART.splice(+b.dataset.i,1)}save()});
+$('#cartBtn').onclick=function(){show('drawer')};
+renderCart();
+
+/* abrir e fechar camadas */
+var open='';
+function show(id){open=id;$('#scrim').classList.add('on');$('#'+id).classList.add('on');$('#'+id).setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(function(){var f=$('#'+id+' [data-close]');f&&f.focus({preventScroll:true})},50)}
+function hide(){if(!open)return;$('#scrim').classList.remove('on');$('#'+open).classList.remove('on');$('#'+open).setAttribute('aria-hidden','true');document.body.style.overflow='';open=''}
+$('#scrim').onclick=hide;$('#modal').addEventListener('click',function(e){if(e.target.id==='modal')hide()});
+$$('[data-close]').forEach(function(b){b.onclick=hide});
+addEventListener('keydown',function(e){if(e.key==='Escape')hide()});
+var tt;function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},2200)}
+
+/* revelar no scroll + parallax */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+$$('.rv').forEach(function(el,i){el.style.transitionDelay=(i%4)*.08+'s';io.observe(el)});
+if(!RM){var tk=false;addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;var y=scrollY;$('#heroBg').style.transform='translate3d(0,'+(y*.35)+'px,0) scale(1.05)';var b=$('#bandBg'),r=b.parentNode.getBoundingClientRect();b.style.transform='translate3d(0,'+(-r.top*.18)+'px,0)'})},{passive:true})}
+</script>
+</body>
+</html>
