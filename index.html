@@ -15,6 +15,7 @@
 <style>
 :root{--sand:#E8D5B5;--bg:#F1E6D2;--card:#FAF4E8;--tx:#47362E;--tx2:#7D6B5C;--ac:#AE4D20;--ac2:#C8642F;--ln:rgba(71,54,46,.16);--wa:#1FAF5A;--r:20px;--d:"Michroma",system-ui,sans-serif;--e:cubic-bezier(.2,.8,.2,1);color-scheme:light}
 *{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--tx);font:16px/1.6 "Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
@@ -230,7 +231,7 @@ footer .lock .fl{color:var(--sand)}
 .fab:hover{transform:scale(1.08)}
 .fab svg{width:29px;height:29px}
 
-/* sacola e modal */
+/* sacola */
 .scrim{position:fixed;inset:0;z-index:60;background:rgba(46,34,27,.5);opacity:0;pointer-events:none;transition:opacity .3s}
 .scrim.on{opacity:1;pointer-events:auto}
 .drawer{position:fixed;top:0;right:0;bottom:0;z-index:70;width:min(440px,100%);background:var(--bg);display:flex;flex-direction:column;transform:translateX(105%);transition:transform .45s var(--e);will-change:transform}
@@ -257,10 +258,7 @@ footer .lock .fl{color:var(--sand)}
 .dempty{text-align:center;padding:70px 10px;color:var(--tx2)}
 .dempty .shield{width:64px;margin:0 auto 20px;opacity:.4}
 
-.modal{position:fixed;z-index:70;inset:0;display:grid;place-items:center;padding:16px;pointer-events:none}
-.mbox{position:relative;pointer-events:auto;width:min(960px,100%);max-height:calc(100svh - 32px);overflow:auto;border-radius:26px;background:var(--bg);display:grid;grid-template-columns:1fr 1fr;opacity:0;transform:translateY(24px);transition:opacity .35s,transform .4s var(--e);visibility:hidden;overscroll-behavior:contain}
-.modal.on .mbox{opacity:1;transform:none;visibility:visible}
-.mvis{position:relative;display:grid;place-items:center;background:var(--sand);min-height:420px;overflow:hidden;perspective:1200px}
+.mvis{position:relative;display:grid;place-items:center;background:var(--sand);aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;perspective:1200px}
 .mvis .ph{position:absolute;inset:0;transition:opacity .45s}
 .mvis .ph img{width:100%;height:100%;object-fit:cover}
 .mvis .ph .svgw{position:absolute;inset:0;display:grid;place-items:center}
@@ -269,13 +267,10 @@ footer .lock .fl{color:var(--sand)}
 .mvis .bk svg{width:min(320px,74%)}
 .mvis[data-side=f] .bk{opacity:0;transform:rotateY(-70deg)}
 .mvis[data-side=b] .ph{opacity:0}
-.mvis .tg{position:absolute;z-index:2;bottom:16px;left:50%;translate:-50% 0;display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--card);box-shadow:0 6px 20px -8px rgba(0,0,0,.35)}
-.mvis .tg button{padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--tx2)}
-.mvis .tg button.on{background:var(--tx);color:var(--sand)}
+.tg{position:absolute;z-index:2;bottom:16px;left:50%;translate:-50% 0;display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--card);box-shadow:0 6px 20px -8px rgba(0,0,0,.35)}
+.tg button{padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--tx2)}
+.tg button.on{background:var(--tx);color:var(--sand)}
 .mvis .fc{position:absolute;z-index:2;top:12px;left:12px;font-size:11px;color:var(--tx2);background:rgba(250,244,232,.92);padding:5px 10px;border-radius:999px;max-width:calc(100% - 80px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mform{padding:30px;display:grid;gap:18px;align-content:start}
-.mform h3{font-size:22px;text-transform:uppercase}
-.mform .x{position:absolute;top:14px;right:14px;z-index:3;background:var(--card)}
 .note{font-size:13px;color:var(--tx2);margin-top:6px}
 .lbl{font:700 11px/1 "Space Grotesk";letter-spacing:.24em;text-transform:uppercase;color:var(--tx2);margin-bottom:10px;display:block}
 .seg{display:flex;flex-wrap:wrap;gap:6px}
@@ -286,11 +281,95 @@ footer .lock .fl{color:var(--sand)}
 .fld input{height:48px;border-radius:12px;border:1.5px solid var(--ln);background:var(--card);padding:0 14px;outline:0;font-size:16px;text-transform:uppercase;width:100%}
 .fld input:focus{border-color:var(--tx)}
 .hint{font-size:12px;color:var(--tx2);margin-top:6px}
-.mtot{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:4px;flex-wrap:wrap}
-.mtot b{font:700 28px/1 "Space Grotesk"}
-.mtot small{display:block;color:var(--tx2);font-size:12px;margin-top:6px}
-@media (max-width:820px){.modal{place-items:end center;padding:0}.mbox{grid-template-columns:1fr;border-radius:26px 26px 0 0;max-height:94svh;transform:translateY(60px)}.mvis{min-height:0;aspect-ratio:1/1}.mform{padding:22px 20px calc(24px + env(safe-area-inset-bottom))}}
 
+
+/* telas: produto, pedido, confirmação */
+.view{padding:96px 0 90px;min-height:100svh}
+body:not([data-v=top]) .fab{display:none}
+.crumb{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--tx2);margin-bottom:22px}
+.crumb a{text-decoration:none;font-weight:600;color:var(--tx)}
+.crumb a:hover{color:var(--ac)}
+.pdp{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,70px);align-items:start}
+.gal{position:sticky;top:84px}
+.gal .tg{position:static;translate:none;justify-content:center;margin:14px auto 0;width:max-content;box-shadow:none;border:1.5px solid var(--ln)}
+.buy{display:grid;gap:22px}
+.buy h1{font-size:clamp(26px,3.4vw,40px);text-transform:uppercase;margin-top:8px}
+.pprice b{font:700 30px/1 "Space Grotesk"}
+.pprice small{display:block;color:var(--tx2);margin-top:6px;font-size:14px}
+.lrow{display:flex;justify-content:space-between;align-items:baseline}
+.lnk{font-size:13px;font-weight:600;text-decoration:underline;color:var(--tx2)}
+.lnk:hover{color:var(--ac)}
+.seg.err button{border-color:var(--ac)}
+.pers{border:1.5px solid var(--ln);border-radius:16px;padding:16px;background:var(--card);transition:border-color .2s}
+.pers.on{border-color:var(--tx)}
+.sw{display:flex;align-items:center;gap:12px;cursor:pointer;font-weight:600}
+.sw input{position:absolute;opacity:0}
+.sw i{flex:none;width:44px;height:26px;border-radius:999px;background:rgba(71,54,46,.2);position:relative;transition:background .2s}
+.sw i::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .25s var(--e)}
+.sw input:checked+i{background:var(--ac)}
+.sw input:checked+i::after{transform:translateX(18px)}
+.sw input:focus-visible+i{outline:2px solid var(--ac);outline-offset:3px}
+.sw small{margin-left:auto;color:var(--ac);font-weight:700;white-space:nowrap}
+.pers .fld{margin-top:14px}
+.step{display:inline-flex;align-items:center;border:1.5px solid var(--ln);border-radius:12px;background:var(--card)}
+.step button{width:44px;height:44px;font-size:20px}
+.step span{min-width:32px;text-align:center;font-weight:700}
+.pact{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pact .btn{width:100%}
+.trust{list-style:none;padding:18px 0 0;border-top:1.5px solid var(--tx);display:grid;gap:10px;font-size:14px;color:var(--tx2)}
+.trust li{display:flex;gap:10px;align-items:baseline}
+.rel{margin-top:clamp(60px,8vw,100px)}
+.rel h2{font-size:clamp(22px,3vw,32px);margin-bottom:24px}
+.pbar{display:none}
+@media (max-width:860px){
+ .pdp{grid-template-columns:1fr}.gal{position:static}.pact{display:none}
+ .pbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(241,230,210,.97);border-top:1.5px solid var(--tx)}
+ .pbar b{font:700 20px/1 "Space Grotesk";display:block}.pbar small{font-size:12px;color:var(--tx2)}
+ .pbar .btn{height:50px;padding:0 22px}
+}
+/* pedido */
+.prog{list-style:none;padding:0;display:flex;gap:8px;margin-bottom:26px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--tx2)}
+.prog li{flex:1;padding-top:10px;border-top:3px solid var(--ln)}
+.prog li.on{border-color:var(--ac);color:var(--tx)}
+.coh{font-size:clamp(28px,4vw,46px);text-transform:uppercase;margin-bottom:30px}
+.cog{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,4vw,60px);align-items:start}
+.cog form{display:grid;gap:26px}
+fieldset{border:0;padding:0;display:grid;gap:14px}
+legend{font:400 16px/1 var(--d);text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:0}
+legend em{font-style:normal;color:var(--ac)}
+.g2{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.g2 .f{grid-column:span 6}.g2 .s2{grid-column:span 2}.g2 .s3{grid-column:span 3}.g2 .s4{grid-column:span 4}
+.f{display:grid;gap:6px;position:relative}
+.f label{font-size:13px;font-weight:600;color:var(--tx2)}
+.f input,.f textarea,.f select{height:50px;border-radius:12px;border:1.5px solid var(--ln);background:var(--card);padding:0 14px;outline:0;font:16px "Space Grotesk";color:var(--tx);width:100%;transition:border-color .2s}
+.f textarea{height:auto;padding:12px 14px;resize:vertical}
+.f input:focus,.f textarea:focus,.f select:focus{border-color:var(--tx)}
+.f [aria-invalid=true]{border-color:#b3261e;background:#fdf1ee}
+.f .err{color:#b3261e;font-size:12.5px;min-height:0}
+.f .err:empty{display:none}
+.f .st{position:absolute;right:14px;top:38px;font-size:12px;color:var(--tx2)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{position:relative;display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:14px;border:1.5px solid var(--ln);background:var(--card);cursor:pointer;transition:border-color .2s}
+.opt input{margin:3px 0 0;accent-color:var(--ac);width:18px;height:18px;flex:none}
+.opt b{display:block;font-size:15px}
+.opt small{display:block;color:var(--tx2);font-size:13px;margin-top:2px}
+.opt:has(input:checked){border-color:var(--tx);box-shadow:inset 0 0 0 1px var(--tx)}
+.big{height:60px;font-size:16px;width:100%}
+.sum{position:sticky;top:84px;background:var(--card);border-radius:var(--r);padding:22px;border:1.5px solid var(--ln)}
+.sum h3{font-size:15px;text-transform:uppercase;margin-bottom:8px}
+.sum .it{grid-template-columns:52px 1fr auto}
+.sum .it .mini{width:52px;height:64px}
+.sum .it .mini svg{width:44px}
+.sum .ln{display:flex;justify-content:space-between;font-size:14px;padding:6px 0;color:var(--tx2)}
+.sum .ln.t{color:var(--tx);font-weight:700;font-size:18px;border-top:1.5px solid var(--tx);margin-top:8px;padding-top:14px}
+.sum .ed{font-size:13px;font-weight:600;color:var(--ac)}
+@media (max-width:860px){.cog{grid-template-columns:1fr}.sum{position:static;order:-1}.opts{grid-template-columns:1fr}.g2 .s2,.g2 .s3,.g2 .s4{grid-column:span 6}.g2 .s2.n{grid-column:span 2}.g2 .s4.n{grid-column:span 4}}
+/* confirmação */
+.okw{max-width:640px;text-align:center;display:grid;justify-items:center;gap:18px}
+.okw .shield{width:84px}
+.okw h1{font-size:clamp(28px,4vw,44px);text-transform:uppercase}
+.okw .sum{width:100%;text-align:left;position:static}
+.okw .cta{justify-content:center}
 .toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));z-index:90;translate:-50% 20px;opacity:0;padding:14px 20px;border-radius:999px;background:var(--tx);color:var(--sand);font-weight:600;font-size:14px;transition:opacity .3s,translate .4s cubic-bezier(.2,1.4,.4,1);pointer-events:none;white-space:nowrap}
 .toast.on{translate:-50% 0;opacity:1}
 
@@ -407,6 +486,75 @@ footer .lock .fl{color:var(--sand)}
 </div></section>
 </main>
 
+<main id="pdp" class="view" hidden><div class="wrap">
+ <nav class="crumb"><a href="#camisas">← Coleção</a><span>/</span><span id="pCrumb"></span></nav>
+ <div class="pdp">
+  <div class="gal">
+   <div class="mvis" id="pVis" data-side="f"><div class="ph" id="pPh"></div><div class="bk" id="pBk"></div><span class="fc" id="pFc"></span></div>
+   <div class="tg mvis-tg" id="pTg"><button class="on" data-side="f">Frente</button><button data-side="b">Com o seu nome</button></div>
+  </div>
+  <div class="buy">
+   <div><span class="lbl" id="pLg" style="color:var(--ac)"></span><h1 id="pT"></h1><p class="note" id="pVer"></p></div>
+   <div class="pprice"><b id="pPrice"></b><small id="pParc"></small></div>
+   <div id="pVerWrap"><span class="lbl">Versão</span><div class="seg" id="pV"></div></div>
+   <div><div class="lrow"><span class="lbl">Tamanho</span><button class="lnk" id="pGuide" aria-expanded="false">Guia de medidas</button></div><div class="seg" id="pS"></div>
+    <div id="pGuideBox" hidden style="margin-top:14px"><table class="sz"><tr><th>Tam.</th><th>Largura</th><th>Altura</th></tr><tr><td>P</td><td>50 cm</td><td>70 cm</td></tr><tr><td>M</td><td>53 cm</td><td>72 cm</td></tr><tr><td>G</td><td>56 cm</td><td>74 cm</td></tr><tr><td>GG</td><td>59 cm</td><td>76 cm</td></tr><tr><td>XG</td><td>62 cm</td><td>78 cm</td></tr></table><p class="hint">Na versão jogador, peça um tamanho acima se gosta de folga.</p></div></div>
+   <div class="pers" id="pPersBox"><label class="sw"><input type="checkbox" id="pPers"><i></i>Nome e número nas costas<small>+ R$ 30,00</small></label>
+    <div id="pFld" hidden><div class="fld"><input id="pName" maxlength="12" placeholder="NOME" autocomplete="off" aria-label="Nome nas costas"><input id="pNum" inputmode="numeric" maxlength="2" placeholder="10" autocomplete="off" aria-label="Número nas costas"></div><p class="hint" id="pPersHint">Até 12 letras e número de 0 a 99. A prévia aparece na foto.</p></div></div>
+   <div class="lrow" style="align-items:center"><span class="lbl" style="margin:0">Quantidade</span><div class="step" id="pQty"><button data-d="-1" aria-label="Menos">−</button><span id="pQ">1</span><button data-d="1" aria-label="Mais">+</button></div></div>
+   <div class="pact"><button class="btn pri" data-buy="add">Pôr na sacola</button><button class="btn gh" data-buy="now">Comprar agora</button></div>
+   <ul class="trust"><li><svg class="star"><use href="#i-star"/></svg>O Gabriel confirma o estoque e manda foto da peça antes do pagamento.</li><li><svg class="star"><use href="#i-star"/></svg>Pix ou cartão em até 5x sem juros.</li><li><svg class="star"><use href="#i-star"/></svg>Entrega em todo o Brasil, frete combinado no WhatsApp.</li></ul>
+  </div>
+ </div>
+ <div class="rel"><h2>Combina com você</h2><div class="grid" id="pRel"></div></div>
+</div>
+<div class="pbar"><div><b id="pBarP"></b><small id="pBarS">Escolha o tamanho</small></div><button class="btn pri" data-buy="add">Pôr na sacola</button></div>
+</main>
+
+<main id="co" class="view" hidden><div class="wrap">
+ <nav class="crumb"><a href="#" id="coBack">← Voltar</a></nav>
+ <ol class="prog"><li class="on">Sacola</li><li class="on">Seus dados</li><li>WhatsApp</li></ol>
+ <h1 class="coh">Fechar pedido</h1>
+ <div class="cog">
+  <form id="coF" novalidate>
+   <fieldset><legend><em>01</em>Seus dados</legend>
+    <div class="g2">
+     <div class="f"><label for="cNome">Nome completo</label><input id="cNome" autocomplete="name" maxlength="60"><small class="err"></small></div>
+     <div class="f"><label for="cTel">WhatsApp com DDD</label><input id="cTel" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(48) 99999-9999" maxlength="15"><small class="err"></small></div>
+    </div>
+   </fieldset>
+   <fieldset><legend><em>02</em>Entrega</legend>
+    <div class="opts"><label class="opt"><input type="radio" name="ent" value="casa" checked><span><b>Receber em casa</b><small>Para todo o Brasil. O frete o Gabriel passa no WhatsApp.</small></span></label><label class="opt"><input type="radio" name="ent" value="ret"><span><b>Combinar retirada</b><small>Em Florianópolis, direto com o Gabriel.</small></span></label></div>
+    <div class="g2" id="cAddr">
+     <div class="f s2 n"><label for="cCep">CEP</label><input id="cCep" inputmode="numeric" autocomplete="postal-code" placeholder="88000-000" maxlength="9"><span class="st" id="cCepSt"></span><small class="err"></small></div>
+     <div class="f s4 n"><label for="cCid">Cidade / UF</label><input id="cCid" autocomplete="address-level2" maxlength="60"><small class="err"></small></div>
+     <div class="f s4"><label for="cRua">Rua</label><input id="cRua" autocomplete="address-line1" maxlength="80"><small class="err"></small></div>
+     <div class="f s2 n"><label for="cNum">Número</label><input id="cNum" maxlength="8" placeholder="ou S/N"><small class="err"></small></div>
+     <div class="f s3"><label for="cBai">Bairro</label><input id="cBai" maxlength="60"><small class="err"></small></div>
+     <div class="f s3"><label for="cCom">Complemento (opcional)</label><input id="cCom" maxlength="40" placeholder="Apto, bloco"><small class="err"></small></div>
+    </div>
+   </fieldset>
+   <fieldset><legend><em>03</em>Pagamento</legend>
+    <div class="opts"><label class="opt"><input type="radio" name="pag" value="pix" checked><span><b>Pix</b><small>O Gabriel te manda a chave.</small></span></label><label class="opt"><input type="radio" name="pag" value="cartao"><span><b>Cartão</b><small id="cParcTxt">Até 5x sem juros, por link.</small></span></label></div>
+    <div class="f" id="cParcW" hidden><label for="cParc">Parcelas</label><select id="cParc"></select></div>
+   </fieldset>
+   <div class="f"><label for="cObs">Observação (opcional)</label><textarea id="cObs" maxlength="300" rows="3" placeholder="Ex.: é presente, preciso até sexta"></textarea></div>
+   <button class="btn wa big" type="submit"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>Enviar pedido pelo WhatsApp</button>
+   <p class="hint" style="text-align:center">Nada é cobrado aqui. O pedido vai pronto para o WhatsApp do Gabriel, que confirma tudo com você. Seus dados ficam só neste aparelho.</p>
+  </form>
+  <aside class="sum" id="coSum"></aside>
+ </div>
+</div></main>
+
+<main id="ok" class="view" hidden><div class="wrap okw">
+ <svg class="shield" viewBox="0 0 100 113" aria-hidden="true"><use href="#logo"/></svg>
+ <span class="lab r" id="okId"></span>
+ <h1 id="okT"></h1>
+ <p class="lead">O WhatsApp do Gabriel abriu com o pedido escrito. Falta só você tocar em enviar lá. Se não abriu, usa o botão.</p>
+ <div class="cta"><a class="btn wa" id="okWa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>Abrir o WhatsApp</a><a class="btn gh" href="#camisas">Voltar para a loja</a></div>
+ <div class="sum" id="okSum"></div>
+</div></main>
+
 <footer class="inv notch"><div class="wrap">
  <div class="lock"><svg class="shield" viewBox="0 0 100 113" aria-hidden="true"><use href="#logo"/></svg><span class="wm"><span>Jersey</span><span>Cl<b>u</b>b</span><span class="fl">Floripa</span></span></div>
  <div class="fcols">
@@ -424,22 +572,12 @@ footer .lock .fl{color:var(--sand)}
  <div class="dh"><h3>Sacola</h3><button class="x" data-close aria-label="Fechar">×</button></div>
  <div class="items" id="items"></div>
  <div class="df" id="df">
-  <div class="tot"><div><small>Total</small><br><b id="tot">R$ 0,00</b></div><small id="parc"></small></div>
-  <a class="btn wa" id="checkout" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>Finalizar com o Gabriel</a>
+  <div class="tot"><div><small>Subtotal</small><br><b id="tot">R$ 0,00</b></div><small id="parc"></small></div>
+  <div class="ln" style="display:flex;justify-content:space-between;font-size:14px;color:var(--tx2)"><span>Frete</span><span>combina com o Gabriel</span></div>
+  <a class="btn pri" id="checkout" href="#/pedido">Fechar pedido <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <button class="lnk" data-close style="justify-self:center">Continuar comprando</button>
  </div>
 </aside>
-
-<div class="modal" id="modal" aria-hidden="true"><div class="mbox" role="dialog" aria-modal="true" aria-labelledby="mTitle">
- <div class="mvis" id="mvis" data-side="f"><div class="ph" id="mPh"></div><div class="bk" id="mBk"></div><span class="fc" id="mFc"></span><div class="tg"><button class="on" data-side="f">Frente</button><button data-side="b">Seu nome</button></div></div>
- <div class="mform">
-  <button class="x" data-close aria-label="Fechar">×</button>
-  <div><span class="lbl" id="mLg" style="color:var(--ac)"></span><h3 id="mTitle"></h3><p class="note" id="mVer"></p></div>
-  <div id="mVerWrap"><span class="lbl">Versão</span><div class="seg" id="mV"></div></div>
-  <div><span class="lbl">Tamanho</span><div class="seg" id="mS"></div></div>
-  <div><span class="lbl">Seu nome nas costas (opcional)</span><div class="fld"><input id="mName" maxlength="12" placeholder="NOME" autocomplete="off" aria-label="Nome"><input id="mNum" inputmode="numeric" maxlength="2" placeholder="10" autocomplete="off" aria-label="Número"></div><p class="hint">Só letras no nome e de 0 a 99 no número. Personalização: + R$ 30,00.</p></div>
-  <div class="mtot"><div><b id="mPrice"></b><small id="mParc"></small></div><button class="btn pri" id="mAdd">Pôr na sacola</button></div>
- </div>
-</div></div>
 
 <div class="toast" id="toast" role="status"></div>
 
@@ -536,60 +674,70 @@ function draw(){
  var full=all||filt||query,shown=full?list:list.slice(0,LIM);
  $('#moreBtn').parentNode.hidden=list.length<=LIM&&!all||!!(filt||query);
  $('#moreBtn').textContent=all?'Mostrar menos':'Ver as '+PR.length+' camisas';
- $('#grid').innerHTML=shown.map(function(p,i){
+ $('#grid').innerHTML=shown.map(card).join('')||'<p class="empty">Nada com esse nome ainda. Chama o Gabriel que ele consegue.</p>';
+}
+function card(p,i){
   var v=base(p),tag=p.hot?'<span class="tag hot">Mais pedida</span>':!p.img?'<span class="tag">Sob encomenda</span>':p.retro?'<span class="tag">Clássica</span>':'';
-  return '<article class="card" style="animation-delay:'+Math.min(i*.04,.4)+'s" data-id="'+p.id+'"><div class="vis" role="button" tabindex="0" aria-label="Escolher '+esc(p.c+' '+p.t)+'">'+front(p,i>3)+tag+'</div>'+
+  return '<article class="card" style="animation-delay:'+Math.min(i*.04,.4)+'s" data-id="'+p.id+'"><a class="vis" href="#/camisa/'+p.id+'" aria-label="Ver '+esc(p.c+' '+p.t)+'">'+front(p,i>3)+tag+'</a>'+
   '<div class="body"><div class="lgn">'+LG[p.l]+'</div><h3>'+esc(p.c)+'</h3><div class="ver">'+esc(p.t)+'</div>'+
-  '<div class="row"><div class="price"><b>'+fmt(v)+'</b><small>'+parc(v)+'</small></div><button class="add" aria-label="Escolher tamanho e pôr na sacola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div></div></article>';
- }).join('')||'<p class="empty">Nada com esse nome ainda. Chama o Gabriel que ele consegue.</p>';
+  '<div class="row"><div class="price"><b>'+fmt(v)+'</b><small>'+parc(v)+'</small></div><a class="add" href="#/camisa/'+p.id+'" aria-label="Escolher tamanho de '+esc(p.c+' '+p.t)+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></a></div></div></article>';
 }
 draw();
-$('#grid').addEventListener('click',function(e){var c=e.target.closest('.card');if(c&&(e.target.closest('.vis')||e.target.closest('.add')))openModal(c.dataset.id)});
-$('#grid').addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.classList.contains('vis'))openModal(e.target.closest('.card').dataset.id)});
 
 /* créditos das fotos */
 $('#cred').innerHTML='Fotos das camisas: Wikimedia Commons. '+PR.filter(function(p){return p.img}).map(function(p){var c=CR[p.img];return esc(p.c+' '+p.t)+': <a href="https://commons.wikimedia.org/wiki/File:'+c[2]+'" target="_blank" rel="noopener">'+esc(c[0])+'</a>, '+esc(c[1])}).join(' · ')+'. Escudos e marcas pertencem aos clubes e federações. Preços sujeitos a confirmação no atendimento.';
 
-/* modal */
-var M={p:null,v:'t',s:'',side:'f'},SIZES=['P','M','G','GG','XG'];
-function mPrice(){var b=M.p.retro?PRICE.r:PRICE[M.v];return b+(($('#mName').value.trim()||$('#mNum').value!=='')?PERS:0)}
-function mBack(){var n=$('#mName').value.trim(),u=$('#mNum').value;$('#mBk').innerHTML=jersey(M.p,1,n||'SEU NOME',u===''?'10':u)}
-function mSide(s){M.side=s;$('#mvis').dataset.side=s;$$('#mvis .tg button').forEach(function(b){b.classList.toggle('on',b.dataset.side===s)})}
+/* página da camisa */
+var M={p:null,v:'t',s:'',q:1,pers:0},SIZES=['P','M','G','GG','XG'];
+function mUnit(){return (M.p.retro?PRICE.r:PRICE[M.v])+(M.pers?PERS:0)}
+function mSide(s){$('#pVis').dataset.side=s;$$('#pTg button').forEach(function(b){b.classList.toggle('on',b.dataset.side===s)})}
+function mBack(){var n=$('#pName').value.trim(),u=$('#pNum').value;$('#pBk').innerHTML=jersey(M.p,1,n||'SEU NOME',u===''?'10':u)}
 function mRender(){
- $('#mV').innerHTML=['t','j'].map(function(v){return '<button class="'+(M.v===v?'on':'')+'" data-v="'+v+'">'+(v==='t'?'Torcedor':'Jogador')+'<small>'+fmt(PRICE[v])+'</small></button>'}).join('');
- $('#mS').innerHTML=SIZES.map(function(s){return '<button class="'+(M.s===s?'on':'')+'" data-s="'+s+'">'+s+'</button>'}).join('');
- var v=mPrice();$('#mPrice').textContent=fmt(v);$('#mParc').textContent=parc(v);
+ $('#pV').innerHTML=['t','j'].map(function(v){return '<button class="'+(M.v===v?'on':'')+'" data-v="'+v+'">'+(v==='t'?'Torcedor':'Jogador')+'<small>'+fmt(PRICE[v])+'</small></button>'}).join('');
+ $('#pS').innerHTML=SIZES.map(function(s){return '<button class="'+(M.s===s?'on':'')+'" data-s="'+s+'" aria-pressed="'+(M.s===s)+'">'+s+'</button>'}).join('');
+ var u=mUnit(),t=u*M.q;$('#pPrice').textContent=fmt(t);$('#pParc').textContent=parc(t)+(M.q>1?' · '+M.q+' camisas':'');
+ $('#pQ').textContent=M.q;$('#pBarP').textContent=fmt(t);$('#pBarS').textContent=M.s?'Tam. '+M.s+(M.pers?' · personalizada':''):'Escolha o tamanho';
+ $('#pPersBox').classList.toggle('on',!!M.pers);$('#pFld').hidden=!M.pers;
 }
-function openModal(id){
- var p=M.p=PR.filter(function(x){return x.id===id})[0];M.v='t';M.s='';
- $('#mName').value='';$('#mNum').value='';
- $('#mLg').textContent=LG[p.l];$('#mTitle').textContent=p.c;
- $('#mVer').textContent=p.t+(p.retro?' · versão única':'')+(p.img?'':' · foto em breve, o Gabriel manda no WhatsApp');
- $('#mVerWrap').style.display=p.retro?'none':'';
- $('#mPh').innerHTML=front(p);
- $('#mFc').textContent=p.img?'Foto: '+CR[p.img][0]+' · '+CR[p.img][1]:'';$('#mFc').style.display=p.img?'':'none';
- $('#mvis .tg button[data-side=f]').textContent=p.back?'Foto':'Frente';
- $('#mBk').style.setProperty('--glow',p.c1+'66');
- mBack();mSide('f');mRender();show('modal');
+function pdp(p){
+ if(M.p===p)return;
+ M.p=p;M.v='t';M.s='';M.q=1;M.pers=0;$('#pPers').checked=false;$('#pName').value='';$('#pNum').value='';$('#pGuideBox').hidden=true;
+ $('#pCrumb').textContent=p.c;$('#pLg').textContent=LG[p.l];$('#pT').textContent=p.c;
+ $('#pVer').textContent=p.t+(p.retro?' · versão única':'')+(p.img?'':' · foto em breve, o Gabriel manda no WhatsApp');
+ $('#pVerWrap').style.display=p.retro?'none':'';
+ $('#pPh').innerHTML=front(p);$('#pBk').style.setProperty('--glow',p.c1+'66');
+ $('#pFc').textContent=p.img?'Foto: '+CR[p.img][0]+' · '+CR[p.img][1]:'';$('#pFc').style.display=p.img?'':'none';
+ $('#pTg button[data-side=f]').textContent=p.back?'Foto':'Frente';
+ var rel=PR.filter(function(x){return x!==p&&x.l===p.l});rel=rel.concat(PR.filter(function(x){return x!==p&&rel.indexOf(x)<0&&x.hot})).slice(0,4);
+ if(rel.length<4)rel=rel.concat(PR.filter(function(x){return x!==p&&rel.indexOf(x)<0})).slice(0,4);
+ $('#pRel').innerHTML=rel.map(function(x,i){return card(x,i+4)}).join('');
+ mBack();mSide('f');mRender();
 }
-$('#mV').addEventListener('click',function(e){var b=e.target.closest('button');if(b){M.v=b.dataset.v;mRender()}});
-$('#mS').addEventListener('click',function(e){var b=e.target.closest('button');if(b){M.s=b.dataset.s;mRender()}});
-$('#mvis').addEventListener('click',function(e){var b=e.target.closest('[data-side]');if(b)mSide(b.dataset.side)});
+$('#pV').addEventListener('click',function(e){var b=e.target.closest('button');if(b){M.v=b.dataset.v;mRender()}});
+$('#pS').addEventListener('click',function(e){var b=e.target.closest('button');if(b){M.s=b.dataset.s;$('#pS').classList.remove('err');mRender()}});
+$('#pTg').addEventListener('click',function(e){var b=e.target.closest('[data-side]');if(b)mSide(b.dataset.side)});
+$('#pQty').addEventListener('click',function(e){var b=e.target.closest('button');if(b){M.q=Math.min(10,Math.max(1,M.q+(+b.dataset.d)));mRender()}});
+$('#pGuide').onclick=function(){var h=$('#pGuideBox').hidden=!$('#pGuideBox').hidden;this.setAttribute('aria-expanded',!h)};
+$('#pPers').addEventListener('change',function(e){M.pers=e.target.checked?1:0;mRender();mSide(M.pers?'b':'f');if(M.pers)$('#pName').focus({preventScroll:true})});
 /* nome só letras, número só 0-99, digitado ou colado */
-$('#mName').addEventListener('input',function(e){e.target.value=e.target.value.replace(/[^A-Za-zÀ-ÿ ]/g,'').replace(/\s{2,}/g,' ').toUpperCase();mBack();mSide('b');mRender()});
-$('#mNum').addEventListener('input',function(e){e.target.value=e.target.value.replace(/\D/g,'').slice(0,2);mBack();mSide('b');mRender()});
-$('#mAdd').onclick=function(){
- if(!M.s){toast('Escolha o tamanho primeiro');if(!RM&&$('#mS').animate)$('#mS').animate([{transform:'translateX(0)'},{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'translateX(0)'}],{duration:320});return}
- add({id:M.p.id,v:M.p.retro?'r':M.v,s:M.s,n:$('#mName').value.trim(),u:$('#mNum').value,q:1,pr:mPrice()});
- hide();toast('Na sacola: '+M.p.c+' · '+M.s);
-};
+$('#pName').addEventListener('input',function(e){e.target.value=e.target.value.replace(/[^A-Za-zÀ-ÿ ]/g,'').replace(/\s{2,}/g,' ').toUpperCase();mBack();mSide('b')});
+$('#pNum').addEventListener('input',function(e){e.target.value=e.target.value.replace(/\D/g,'').slice(0,2);mBack();mSide('b')});
+function shake(el){if(!RM&&el.animate)el.animate([{transform:'translateX(0)'},{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'translateX(0)'}],{duration:320})}
+$$('[data-buy]').forEach(function(b){b.onclick=function(){
+ if(!M.s){toast('Escolha o tamanho');$('#pS').classList.add('err');$('#pS').scrollIntoView({block:'center'});shake($('#pS'));return}
+ var n=M.pers?$('#pName').value.trim():'',u=M.pers?$('#pNum').value:'';
+ if(M.pers&&!n&&u===''){toast('Digite o nome ou o número');$('#pName').focus();shake($('#pFld'));return}
+ add({id:M.p.id,v:M.p.retro?'r':M.v,s:M.s,n:n,u:u,q:M.q,pr:mUnit()});
+ if(b.dataset.buy==='now'){location.hash='#/pedido';return}
+ toast('Na sacola: '+M.p.c+' · '+M.s);show('drawer');
+}});
 
 /* sacola (fica salva no aparelho) */
 var CART=[];try{CART=JSON.parse(localStorage.getItem('jc-cart')||'[]')}catch(e){}
 var prod=function(id){return PR.filter(function(p){return p.id===id})[0]};
 CART=CART.filter(function(c){return prod(c.id)});
-function save(){try{localStorage.setItem('jc-cart',JSON.stringify(CART))}catch(e){}renderCart()}
-function add(it){var k=[it.id,it.v,it.s,it.n,it.u].join('|'),f=CART.filter(function(c){return [c.id,c.v,c.s,c.n,c.u].join('|')===k})[0];if(f)f.q++;else CART.push(it);save();var b=$('#cartBtn');if(!RM&&b.animate)b.animate([{transform:'scale(1)'},{transform:'scale(1.2)'},{transform:'scale(1)'}],{duration:400,easing:'cubic-bezier(.2,1.6,.4,1)'})}
+function save(){try{localStorage.setItem('jc-cart',JSON.stringify(CART))}catch(e){}renderCart();if(cur==='co'){if(CART.length)coRender();else location.hash='#camisas'}}
+function add(it){var k=[it.id,it.v,it.s,it.n,it.u].join('|'),f=CART.filter(function(c){return [c.id,c.v,c.s,c.n,c.u].join('|')===k})[0];if(f)f.q=Math.min(20,f.q+it.q);else CART.push(it);save();var b=$('#cartBtn');if(!RM&&b.animate)b.animate([{transform:'scale(1)'},{transform:'scale(1.2)'},{transform:'scale(1)'}],{duration:400,easing:'cubic-bezier(.2,1.6,.4,1)'})}
 var VN={t:'Torcedor',j:'Jogador',r:'Clássica'};
 function total(){return CART.reduce(function(a,c){return a+c.pr*c.q},0)}
 function renderCart(){
@@ -597,23 +745,111 @@ function renderCart(){
  $('#df').style.display=n?'':'none';
  $('#items').innerHTML=n?CART.map(function(c,i){var p=prod(c.id);return '<div class="it"><div class="mini">'+(c.n||c.u?jersey(p,1,c.n,c.u):front(p,1))+'</div><div><b>'+esc(p.c)+' · '+esc(p.t)+'</b><small>'+VN[c.v]+' · Tam. '+c.s+(c.n||c.u?' · '+esc(c.n)+' '+esc(c.u):'')+'</small><div class="qty"><button data-q="-1" data-i="'+i+'" aria-label="Menos">−</button><span>'+c.q+'</span><button data-q="1" data-i="'+i+'" aria-label="Mais">+</button></div></div><div class="pr">'+fmt(c.pr*c.q)+'<button class="rm" data-rm="'+i+'">Tirar</button></div></div>'}).join(''):'<div class="dempty"><svg class="shield" viewBox="0 0 100 113"><use href="#logo"/></svg>Sua sacola está vazia.<br>Bora vestir um clube?</div>';
  var t=total();$('#tot').textContent=fmt(t);$('#parc').textContent=t?parc(t):'';
- $('#checkout').href=waLink(orderMsg());
 }
-function orderMsg(){
- var L=['Olá, Gabriel! Quero fechar este pedido no Jersey Club:',''];
- CART.forEach(function(c,i){var p=prod(c.id);L.push((i+1)+') '+p.c+' '+p.t+' · '+VN[c.v]+' · Tam. '+c.s+(c.n||c.u?' · Personalizada: '+(c.n||'-')+' '+(c.u||''):'')+' · '+c.q+'x '+fmt(c.pr)+' = '+fmt(c.pr*c.q))});
- L.push('','Total: '+fmt(total()),'','Pode me passar o pagamento e o prazo de entrega?');
+function orderMsg(o){
+ var L=['Olá, Gabriel! Pedido '+o.id+' pelo site do Jersey Club:',''];
+ o.items.forEach(function(c,i){var p=prod(c.id);L.push((i+1)+') '+p.c+' '+p.t+' · '+VN[c.v]+' · Tam. '+c.s+(c.n||c.u?' · Personalizada: '+(c.n||'-')+' '+(c.u||''):'')+' · '+c.q+'x '+fmt(c.pr)+' = '+fmt(c.pr*c.q))});
+ L.push('','Total das camisas: '+fmt(o.total),'Frete: a combinar','','Nome: '+o.nome,'WhatsApp: '+o.tel);
+ L.push(o.ent==='casa'?'Entrega: '+o.rua+', '+o.num+(o.com?' ('+o.com+')':'')+', '+o.bai+', '+o.cid+', CEP '+o.cep:'Entrega: combinar retirada em Florianópolis');
+ L.push('Pagamento: '+(o.pag==='pix'?'Pix':'Cartão em '+o.parc+'x de '+fmt(o.total/o.parc)+' sem juros'));
+ if(o.obs)L.push('Obs.: '+o.obs);
+ L.push('','Pode confirmar o estoque e o frete?');
  return L.join('\n');
 }
 $('#items').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.rm!=null)CART.splice(+b.dataset.rm,1);else if(b.dataset.q){var c=CART[+b.dataset.i];c.q+=+b.dataset.q;if(c.q<1)CART.splice(+b.dataset.i,1)}save()});
 $('#cartBtn').onclick=function(){show('drawer')};
 renderCart();
 
+
+/* pedido: dados, entrega e pagamento; tudo vai pelo WhatsApp, nada é cobrado aqui */
+function sumHTML(items,tot,edit){
+ return '<h3>Seu pedido'+(edit?' <a class="ed" href="#" data-cart style="float:right">Editar</a>':'')+'</h3>'+items.map(function(c){var p=prod(c.id);return '<div class="it"><div class="mini">'+(c.n||c.u?jersey(p,1,c.n,c.u):front(p,1))+'</div><div><b>'+esc(p.c)+'</b><small>'+VN[c.v]+' · Tam. '+c.s+(c.n||c.u?' · '+esc(c.n)+' '+esc(c.u):'')+' · '+c.q+'x</small></div><div class="pr">'+fmt(c.pr*c.q)+'</div></div>'}).join('')+
+ '<div class="ln" style="margin-top:10px"><span>Camisas</span><span>'+fmt(tot)+'</span></div><div class="ln"><span>Frete</span><span>a combinar</span></div><div class="ln t"><span>Total</span><span>'+fmt(tot)+'</span></div><div class="ln" style="justify-content:flex-end">'+parc(tot)+'</div>';
+}
+var F=function(id){return $('#'+id)},one=function(s){return String(s).replace(/\s+/g,' ').trim()};
+var mTel=function(v){v=v.replace(/\D/g,'').slice(0,11);return v.length>10?v.replace(/(\d\d)(\d{5})(\d{0,4})/,'($1) $2-$3'):v.length>6?v.replace(/(\d\d)(\d{4})(\d{0,4})/,'($1) $2-$3'):v.length>2?v.replace(/(\d\d)(\d*)/,'($1) $2'):v};
+var mCep=function(v){v=v.replace(/\D/g,'').slice(0,8);return v.length>5?v.slice(0,5)+'-'+v.slice(5):v};
+F('cTel').addEventListener('input',function(e){e.target.value=mTel(e.target.value)});
+F('cNome').addEventListener('input',function(e){e.target.value=e.target.value.replace(/[^A-Za-zÀ-ÿ '\-]/g,'').replace(/\s{2,}/g,' ')});
+F('cNum').addEventListener('input',function(e){e.target.value=e.target.value.replace(/[^0-9A-Za-z\/ -]/g,'')});
+var cepAt='';
+F('cCep').addEventListener('input',function(e){e.target.value=mCep(e.target.value);var d=e.target.value.replace(/\D/g,'');if(d.length===8&&d!==cepAt){cepAt=d;viaCep(d)}});
+function viaCep(d){
+ F('cCepSt').textContent='buscando…';
+ var ac=new AbortController(),to=setTimeout(function(){ac.abort()},6000);
+ fetch('https://viacep.com.br/ws/'+d+'/json/',{signal:ac.signal}).then(function(r){return r.json()}).then(function(j){
+  clearTimeout(to);
+  if(j.erro){F('cCepSt').textContent='';setErr('cCep','CEP não encontrado. Confere ou preenche à mão.');return}
+  F('cCepSt').textContent='✓';setErr('cCep','');
+  if(j.logradouro)F('cRua').value=j.logradouro;if(j.bairro)F('cBai').value=j.bairro;F('cCid').value=j.localidade+' / '+j.uf;
+  ['cRua','cBai','cCid'].forEach(function(k){if(F(k).value)setErr(k,'')});
+  (F('cRua').value?F('cNum'):F('cRua')).focus();
+ }).catch(function(){F('cCepSt').textContent='';});
+}
+function setErr(id,m){var el=F(id),e=el.parentNode.querySelector('.err');el.setAttribute('aria-invalid',m?'true':'false');if(e)e.textContent=m;return !m}
+function val(){return function(r,k){return r[k]=one(F(k).value),r}}
+function rules(){
+ var casa=$('[name=ent]:checked').value==='casa',ok=[],nome=one(F('cNome').value),tel=F('cTel').value.replace(/\D/g,'');
+ ok.push(setErr('cNome',nome.split(' ').length<2||nome.length<5?'Escreve nome e sobrenome.':''));
+ ok.push(setErr('cTel',tel.length<10||tel[0]==='0'?'WhatsApp com DDD, só números.':''));
+ [['cCep',function(v){return v.replace(/\D/g,'').length===8},'CEP com 8 números.'],['cCid',function(v){return v.length>2},'Informe a cidade.'],['cRua',function(v){return v.length>2},'Informe a rua.'],['cNum',function(v){return v.length>0},'Número ou S/N.'],['cBai',function(v){return v.length>1},'Informe o bairro.']].forEach(function(r){ok.push(setErr(r[0],casa&&!r[1](one(F(r[0]).value))?r[2]:''))});
+ return ok.every(Boolean);
+}
+['cNome','cTel','cCep','cCid','cRua','cNum','cBai'].forEach(function(k){F(k).addEventListener('blur',function(){if(F(k).value)rules()});F(k).addEventListener('input',function(){if(F(k).getAttribute('aria-invalid')==='true')setErr(k,'')})});
+$$('[name=ent]').forEach(function(r){r.onchange=function(){F('cAddr').hidden=r.value!=='casa'&&r.checked}});
+$$('[name=pag]').forEach(function(r){r.onchange=function(){F('cParcW').hidden=$('[name=pag]:checked').value!=='cartao'}});
+function coRender(){
+ var t=total(),mx=t>=300?5:t>=250?4:t>=220?3:2;
+ F('cParc').innerHTML=Array.from({length:mx},function(_,i){return '<option value="'+(i+1)+'">'+(i+1)+'x de '+fmt(t/(i+1))+' sem juros</option>'}).join('');
+ F('cParc').value=mx;F('cParcTxt').textContent='Até '+mx+'x de '+fmt(t/mx)+' sem juros, por link.';
+ $('#coSum').innerHTML=sumHTML(CART,t,1);
+ var c={};try{c=JSON.parse(localStorage.getItem('jc-cli')||'{}')}catch(e){}
+ ['cNome','cTel','cCep','cCid','cRua','cNum','cBai','cCom'].forEach(function(k){if(c[k]&&!F(k).value)F(k).value=c[k]});
+}
+$('#coSum').addEventListener('click',function(e){if(e.target.closest('[data-cart]')){e.preventDefault();show('drawer')}});
+$('#coBack').onclick=function(e){e.preventDefault();history.length>1?history.back():location.hash='#camisas'};
+var LAST=null;try{LAST=JSON.parse(localStorage.getItem('jc-last')||'null')}catch(e){}
+F('coF').addEventListener('submit',function(e){
+ e.preventDefault();
+ if(!rules()){var b=$('#coF [aria-invalid=true]');b.focus();b.scrollIntoView({block:'center'});toast('Confere os campos marcados');return}
+ var o=['cNome','cTel','cCep','cCid','cRua','cNum','cBai','cCom','cObs'].reduce(val(),{}),d=new Date();
+ try{localStorage.setItem('jc-cli',JSON.stringify(o))}catch(e){}
+ o={id:'JC-'+String(d.getDate()).padStart(2,'0')+String(d.getMonth()+1).padStart(2,'0')+'-'+String(Math.floor(1000+Math.random()*9000)),items:CART.slice(),total:total(),nome:o.cNome,tel:o.cTel,cep:o.cCep,cid:o.cCid,rua:o.cRua,num:o.cNum,bai:o.cBai,com:o.cCom,obs:o.cObs,ent:$('[name=ent]:checked').value,pag:$('[name=pag]:checked').value,parc:+F('cParc').value};
+ o.link=waLink(orderMsg(o));LAST=o;
+ try{localStorage.setItem('jc-last',JSON.stringify(o))}catch(e){}
+ window.open(o.link,'_blank','noopener');
+ CART=[];try{localStorage.setItem('jc-cart','[]')}catch(e){}renderCart();location.hash='#/ok';
+});
+function okRender(){
+ $('#okId').textContent='Pedido '+LAST.id;$('#okT').textContent='Valeu, '+LAST.nome.split(' ')[0]+'!';
+ $('#okWa').href=LAST.link;$('#okSum').innerHTML=sumHTML(LAST.items,LAST.total);
+}
+
+/* rotas: #/camisa/<id>, #/pedido, #/ok; o resto é a página inicial */
+var homeY=0,cur='top';
+function route(){
+ var h=location.hash,m=h.match(/^#\/camisa\/(\w+)/),v='top';
+ if(m&&prod(m[1])){v='pdp';pdp(prod(m[1]))}
+ else if(h==='#/pedido'){if(!CART.length){location.replace('#camisas');return}v='co';coRender()}
+ else if(h==='#/ok'&&LAST){v='ok';okRender()}
+ hide();
+ if(cur==='top'&&v!=='top')homeY=scrollY;
+ ['top','pdp','co','ok'].forEach(function(id){$('#'+id).hidden=id!==v});
+ document.body.dataset.v=v;
+ document.title=v==='pdp'?M.p.c+' '+M.p.t+' · Jersey Club Floripa':v==='co'?'Fechar pedido · Jersey Club Floripa':'Jersey Club Floripa · Camisas de time com o seu nome';
+ var t=v==='top'&&h.length>1&&h[1]!=='/'&&document.getElementById(h.slice(1));
+ if(t)t.scrollIntoView({behavior:'instant'});else scrollTo({top:v==='top'&&cur!=='top'?homeY:0,behavior:'instant'});
+ if(v!=='top'&&cur!==v)$$('#'+v+' .rv').forEach(function(el){el.classList.add('in')});
+ cur=v;
+}
+addEventListener('hashchange',route);
+$('#checkout').addEventListener('click',hide);
+
 /* abrir e fechar camadas */
 var open='';
 function show(id){open=id;$('#scrim').classList.add('on');$('#'+id).classList.add('on');$('#'+id).setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(function(){var f=$('#'+id+' [data-close]');f&&f.focus({preventScroll:true})},50)}
 function hide(){if(!open)return;$('#scrim').classList.remove('on');$('#'+open).classList.remove('on');$('#'+open).setAttribute('aria-hidden','true');document.body.style.overflow='';open=''}
-$('#scrim').onclick=hide;$('#modal').addEventListener('click',function(e){if(e.target.id==='modal')hide()});
+$('#scrim').onclick=hide;
 $$('[data-close]').forEach(function(b){b.onclick=hide});
 addEventListener('keydown',function(e){if(e.key==='Escape')hide()});
 var tt;function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},2200)}
@@ -624,6 +860,7 @@ var ly=0;addEventListener('scroll',function(){var y=scrollY,n=$('#nav');n.classL
 /* revelar no scroll */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 $$('.rv').forEach(function(el,i){el.style.transitionDelay=(i%4)*.07+'s';io.observe(el)});
+route();
 </script>
 </body>
 </html>
